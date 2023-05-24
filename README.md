@@ -6,10 +6,10 @@
 </p>
 
 <p align="center">
-  Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.
+    This is a decenralized application for vehicle sharing using tokenization. So vehicle owners need to tokenize the vehicles and once vehicles are tokenized, they are listed and renters can rent them. So when a user rents a vehicle, the ownership of vehicle is transferred to renter from owner. When rental period is over, ownership is transferred back to owner from renter. Before renting a vehicle, renters will have to pay some deposit_money, this money will be serving as security money for vehicle and also if renters are using car beyond the time frame, some part of deposit_money will be deducted and transferred to owner's wallet. 
 </p>
 
-## 📝 Table of Contents
+## Table of Contents
 
 - [About](#about)
 - [Getting Started](#getting_started)
@@ -17,10 +17,10 @@
 - [Built Using](#built_using)
 - [References](#references)
 
-## 🧐 About <a name = "about" id="about"></a>
-Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.
+## About <a name = "about" id="about"></a>
+In the digital era, traditional vehicle rental systems often face challenges related to transparency, trust, and intermediaries. However, with the emergence of blockchain technology, a new paradigm is reshaping the landscape of vehicle sharing. Blockchain-based tokenization is transforming the way vehicles are rented and shared, enabling a more effective and streamlined process for both owners and renters. By representing vehicles as digital assets on a secure and transparent blockchain network, tokenization empowers participants to engage in peer-to-peer transactions, bypassing intermediaries, and benefiting from enhanced trust and efficiency.
 
-## 🏁 Getting Started <a name = "getting_started" id= "getting_started"></a>
+## Getting Started <a name = "getting_started" id= "getting_started"></a>
 
 These instructions will get you a copy of the project up and running on your local machine for development and testing purposes. 
 
@@ -96,9 +96,9 @@ Follow the below steps to install all the dependencies and run the project
 9. To run test files for smart contracts, use  ```truffle test```
 
 
-## 🎈 Usage <a name="usage" id="usage"></a>
+<!-- ## Usage <a name="usage" id="usage"></a> -->
 
-## ⛏️ Built Using <a name = "built_using" id="built_using"></a>
+## Built Using <a name = "built_using" id="built_using"></a>
 
 - [Ganache](https://trufflesuite.com/ganache/) - Ethereun Test Network
 - [Sepolia TestNet](https://sepoliafaucet.com/) - Sepolia Test network
@@ -109,7 +109,7 @@ Follow the below steps to install all the dependencies and run the project
 - [NodeJs](https://nodejs.org/en/) - Server Environment
 
 
-## 🎉 References <a name = "references" id="references"></a>
+## References <a name = "references" id="references"></a>
 
 - https://github.com/OpenZeppelin/openzeppelin-contracts/blob/master/contracts/token/ERC721/ERC721.sol
 - https://medium.com/coinmonks/5-minute-guide-to-deploying-smart-contracts-with-truffle-and-ropsten-b3e30d5ee1e
