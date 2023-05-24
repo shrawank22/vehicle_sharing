@@ -1,0 +1,30 @@
+{
+  "name": "vehicle_sharing",
+  "version": "1.0.0",
+  "description": "Enhanced Vehicle Sharing using blockchain based tokenization",
+  "main": "app.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "nodemon app.js"
+  },
+  "keywords": [
+    "shrawank22",
+    "blockchain",
+    "vehicle_sharing",
+    "IIT",
+    "IITK",
+    "Thesis",
+    "IIT Kanpur"
+  ],
+  "author": "shrawank22",
+  "license": "ISC",
+  "devDependencies": {
+    "nodemon": "^2.0.22"
+  },
+  "dependencies": {
+    "@openzeppelin/contracts": "^4.8.3",
+    "@truffle/hdwallet-provider": "^2.1.11",
+    "dotenv": "^16.0.3",
+    "express": "^4.18.2"
+  }
+}

@@ -1,0 +1,6 @@
+.env
+node_modules
+package-lock.json
+test
+build/
+1.txt
