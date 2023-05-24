@@ -1,6 +1,6 @@
 .env
 node_modules
+build/
 package-lock.json
 test
-build/
 1.txt
