@@ -21,6 +21,7 @@ contract VehicleSharing is ERC721 {
 
     struct User {
         string name;
+        string aadhar;
         uint256 balance;
         address userAddress;
         bool isVerified;
@@ -48,18 +49,19 @@ contract VehicleSharing is ERC721 {
         _;
     }
 
-
-    function registerUser(string memory name, uint256 _balance) external {
+    function registerUser(string memory name, string memory aadhar) external {
         require(_users[msg.sender].userAddress == address(0), "User is already registered");
+        // require(msg.sender != manager || msg.sender != verifier, "You are admin or verifier");
 
         User storage user = _users[msg.sender];
         user.name = name;
-        user.balance = _balance;
+        user.balance = 0;
+        user.aadhar = aadhar;
         user.userAddress = msg.sender;
         user.isVerified = false;
     }
 
-    function verifyuser (address userAdd) public onlyVerifier() {
+    function verifyUser (address userAdd) public onlyVerifier() {
         User storage user = _users[userAdd];
         user.isVerified = true;
     }
@@ -78,6 +80,19 @@ contract VehicleSharing is ERC721 {
         newVehicle.currentRenter = address(0);
     }
 
+    function getVehicleDetails(uint256 vehicleId) external view returns (uint256, string memory, string memory, string memory, uint256, address, address[] memory) {
+        Vehicle storage vehicle = _vehicles[vehicleId];
+        return (
+            vehicle.id,
+            vehicle.typeVehicle,
+            vehicle.make,
+            vehicle.model,
+            vehicle.pricePerHour,
+            vehicle.currentRenter,
+            vehicle.renters
+        );
+    }
+
     function rentVehicle(uint256 vehicleId) external payable {
         Vehicle storage vehicle = _vehicles[vehicleId];
         require(vehicle.currentRenter == address(0), "vehicle is already rented");
@@ -86,6 +101,9 @@ contract VehicleSharing is ERC721 {
         require(user.isVerified, "User is not verified");
 
         // other logic
+        rentCount++;
+        vehicle.currentRenter = msg.sender;
+        vehicle.renters.push(msg.sender);
     }
 
 }
