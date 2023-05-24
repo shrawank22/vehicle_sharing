@@ -107,6 +107,20 @@ contract VehicleSharing is ERC721 {
         Vehicle storage vehicle = _vehicles[vehicleId];
         require(vehicle.currentRenter == msg.sender, "You are not the renter of this vehicle");
 
+        uint256 rental_duration = (block.timestamp - vehicle.start) / 1 hours;
+        uint256 payment = rental_duration * vehicle.pricePerHour;
+
+        User storage user = _users[msg.sender];
+
+        if (rental_duration < (vehicle.end - vehicle.start) / 1 hours) {
+            user.balance += (vehicle.temp_bal - payment);  // Returning unused balance to user
+        } else {
+            vehicle.balance += payment; // Additional payment from deposit balance
+        }
+
+        user.locked_bal -= vehicle.temp_bal;
+        vehicle.temp_bal = 0;
+
         vehicle.currentRenter = address(0);
         vehicle.isAvailable = true;
         _transfer(ownerOf(vehicleId), manager, vehicleId);
