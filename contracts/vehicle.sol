@@ -6,6 +6,7 @@ import "@openzeppelin/contracts/token/ERC721/ERC721.sol";
 // import "@openzeppelin/contracts/token/ERC20/ERC20.sol";
 import "@openzeppelin/contracts/utils/Counters.sol";
 
+
 contract VehicleSharing is ERC721 {
     using Counters for Counters.Counter;
     Counters.Counter private _tokenIdCounter;
@@ -56,7 +57,7 @@ contract VehicleSharing is ERC721 {
 
         User storage user = _users[msg.sender];
         user.name = name;
-        user.balance = 65978657865478654;
+        user.balance = 20 * 1e18;
         user.locked_bal = 0;
         user.aadhar = aadhar;
         user.userAddress = msg.sender;
@@ -73,7 +74,7 @@ contract VehicleSharing is ERC721 {
         newVehicle.make = make;
         newVehicle.model = model;
         newVehicle.pricePerHour = pricePerHour;
-        newVehicle.deposit_bal = deposit_price;
+        newVehicle.deposit_bal = deposit_price * 1e18;
         newVehicle.currentRenter = address(0);
         newVehicle.isAvailable = true;
         newVehicle.balance = 0;
@@ -88,7 +89,7 @@ contract VehicleSharing is ERC721 {
         require(user.userAddress != address(0), "User is not registered");
 
         // other logic
-        uint256 rent_cost = vehicle.deposit_bal + (vehicle.pricePerHour * ((end - start) / 1 hours));
+        uint256 rent_cost = vehicle.deposit_bal + (vehicle.pricePerHour * divide((end - start), 1 hours));
         require(user.balance >= rent_cost, "Insufficient funds");
         user.balance -= rent_cost;
         user.locked_bal += rent_cost;
@@ -103,26 +104,32 @@ contract VehicleSharing is ERC721 {
         _transfer(ownerOf(vehicleId), msg.sender, vehicleId);
     }
 
-    function returnVehicle(uint256 vehicleId) external {
+    function returnVehicle(uint256 vehicleId) external payable {
         Vehicle storage vehicle = _vehicles[vehicleId];
         require(vehicle.currentRenter == msg.sender, "You are not the renter of this vehicle");
 
-        uint256 rental_duration = (block.timestamp - vehicle.start) / 1 hours;
+        uint256 rental_duration = divide((block.timestamp - vehicle.start), 1 hours);
         uint256 payment = rental_duration * vehicle.pricePerHour;
 
         User storage user = _users[msg.sender];
 
-        if (rental_duration < (vehicle.end - vehicle.start) / 1 hours) {
-            user.balance += (vehicle.temp_bal - payment);  // Returning unused balance to user
+        if (rental_duration < divide((vehicle.end - vehicle.start), 1 hours)) {
+            user.balance += ((vehicle.temp_bal) - payment);  // Returning unused balance to user
         } else {
-            vehicle.balance += payment; // Additional payment from deposit balance
+            user.balance += 0;
         }
-
-        user.locked_bal -= vehicle.temp_bal;
+        vehicle.balance = payment;
+        user.locked_bal -= vehicle.balance;
         vehicle.temp_bal = 0;
 
         vehicle.currentRenter = address(0);
         vehicle.isAvailable = true;
         _transfer(ownerOf(vehicleId), manager, vehicleId);
+    }
+
+    // Driver functions
+    function divide(uint256 a, uint256 b) public pure returns(uint256) {
+        require(b != 0, "division by zero will result in infinity.");
+        return (a * 1e18) / b;
     }
 }
