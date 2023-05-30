@@ -126,10 +126,4 @@ contract VehicleSharing is ERC721 {
         vehicle.isAvailable = true;
         _transfer(ownerOf(vehicleId), manager, vehicleId);
     }
-
-    // Driver functions
-    function divide(uint256 a, uint256 b) public pure returns(uint256) {
-        require(b != 0, "division by zero will result in infinity.");
-        return (a * 1e18) / b;
-    }
 }
