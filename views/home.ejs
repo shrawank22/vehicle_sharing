@@ -35,6 +35,25 @@
     <div id="alertContainer"></div>
   </div>
 
+  <div id="vehicleDetails" class="container">
+    <table id="vehicle-table">
+      <h2>Vehicle Details</h2>
+      <thead>
+        <tr>
+          <th>V. Id</th>
+          <th>Type</th>
+          <th>Make</th>
+          <th>Model</th>
+          <th>Price/Hour</th>
+          <th>Current Renter</th>
+          <th>Previous Renters</th>
+          <th>Available?</th>
+        </tr>
+      </thead>
+      <tbody id="vehicle-details"></tbody>
+    </table>
+  </div>
+
   
   <div id="formContainer" class="container">
     <h2>Add Vehicle</h2>
@@ -78,26 +97,6 @@
 
       <button type="submit" class="btn btn-primary">Register</button>
     </form>
-  </div>
-
-  <div id="vehicleDetails" class="container">
-    <table id="vehicle-table">
-      <h2>Vehicle Details</h2>
-      <thead>
-        <tr>
-          <th>V. Id</th>
-          <th>Type</th>
-          <th>Make</th>
-          <th>Model</th>
-          <th>Price/Hour</th>
-          <th>Deposit Price</th>
-          <th>Current Renter</th>
-          <th>Previous Renters</th>
-          <th>Available?</th>
-        </tr>
-      </thead>
-      <tbody id="vehicle-details"></tbody>
-    </table>
   </div>
 
   <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
