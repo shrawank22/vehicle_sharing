@@ -13,7 +13,7 @@
 
 - [About](#about)
 - [Getting Started](#getting_started)
-- [Usage](#usage)
+<!-- - [Usage](#usage) -->
 - [Built Using](#built_using)
 - [References](#references)
 
@@ -51,14 +51,18 @@ Follow the below steps to install all the dependencies and run the project
     ```
     npm install
     ```
-4. For compiling and deploying smart contracts, sepolia testnet is used. So go to truffle-config.js file and find line 
+4. Also you need to install truffle using command
+    ```
+    npm install -g truffle@latest
+    ```
+5. For compiling and deploying smart contracts, sepolia testnet is used. So go to truffle-config.js file and find line 
     ```
     provider: () => new HDWalletProvider(MNEMONIC, `wss://eth-sepolia.g.alchemy.com/v2/${PROJECT_ID}`),
     ``` 
     Here you need to add your own metamask ```MNEMONIC``` and also you need to replace the ```PROJECT_ID``` with your own Alchemy project id. 
     The best practice is that you should create a ```.env``` file and add both ```MNEMONIC``` and ```PROJECT_ID``` to that file only and this way you don't have to change truffle-config.js file.
-5. When you are done setting up truffle-config file, You have two choices to compile and deploy the smart contracts:
-    1. Using Docker
+6. When you are done setting up truffle-config file, You have two choices to compile and deploy the smart contracts:
+    1. Using Docker (For this, you need to install docker using command ```sudo apt install docker.io```)
 	    - Docker container is already set up, you need to build the docker image by running command: 
             ```
             docker build -t truffle-docker .
@@ -77,12 +81,12 @@ Follow the below steps to install all the dependencies and run the project
             ```
             truffle migrate --network sepolia
             ```
-6. For deploying on ganache (For this you need to open Ganache GUI), use command 
+7. For deploying on ganache (For this you need to open Ganache GUI), use command 
     ```
     truffle migrate --network development
     ```
     - If you are using ganache CLI, make sure to update PORT in development to ```8545```
-7. Once contract is deployed successfully, You will be getting something like this:
+8. Once contract is deployed successfully, You will be getting something like this:
     ```
     1_deploy_contracts.js
     =====================
@@ -104,13 +108,13 @@ Follow the below steps to install all the dependencies and run the project
     ```
     Copy the contract address from here, and go to js file and replace the contract address with your address. 
     
-8. Now to run the project, use command
+9. Now to run the project, use command
     ```
     npm start
     ```
     If everything works well then you will get ``` Server started at port 8080``` in terminal after running command npm start. So you need to visit ```http://localhost:8080/``` to view the      application. 
 
-9. To run test files for smart contracts, use  ```truffle test```
+10. To run test files for smart contracts, use  ```truffle test```
 
 
 <!-- ## Usage <a name="usage" id="usage"></a> -->
@@ -130,4 +134,5 @@ Follow the below steps to install all the dependencies and run the project
 
 - https://github.com/OpenZeppelin/openzeppelin-contracts/blob/master/contracts/token/ERC721/ERC721.sol
 - https://medium.com/coinmonks/5-minute-guide-to-deploying-smart-contracts-with-truffle-and-ropsten-b3e30d5ee1e
+
 

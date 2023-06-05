@@ -13,9 +13,9 @@
         <a class="navbar-brand" href="https://shrawank22.onrender.com/">Vehicle Sharing</a>
         <div class="collapse navbar-collapse" id="navbarNav">
           <ul class="navbar-nav ml-auto">
-            <!-- <li class="nav-item mr-3">
+            <li class="nav-item mr-3">
               <button id="verifyBtn" type="button" class="hidden">Verify User</button>
-            </li> -->
+            </li>
             <li class="nav-item mr-3">
               <button id="addVehicle" type="button" class="hidden">Add Vehicle</button>
             </li>
@@ -33,6 +33,25 @@
 
   <div class="container">
     <div id="alertContainer"></div>
+  </div>
+
+  <div id="vehicleDetails" class="container">
+    <table id="vehicle-table">
+      <h2>Vehicle Details</h2>
+      <thead>
+        <tr>
+          <th>V. Id</th>
+          <th>Type</th>
+          <th>Make</th>
+          <th>Model</th>
+          <th>Price/Hour</th>
+          <th>Current Renter</th>
+          <th>Previous Renters</th>
+          <th>Available?</th>
+        </tr>
+      </thead>
+      <tbody id="vehicle-details"></tbody>
+    </table>
   </div>
 
   
@@ -78,25 +97,6 @@
 
       <button type="submit" class="btn btn-primary">Register</button>
     </form>
-  </div>
-
-  <div id="vehicleDetails" class="container">
-    <table id="vehicle-table">
-      <h2>Vehicle Details</h2>
-      <thead>
-        <tr>
-          <th>V. Id</th>
-          <th>Type</th>
-          <th>Make</th>
-          <th>Model</th>
-          <th>Price/Hour</th>
-          <th>Current Renter</th>
-          <th>Previous Renters</th>
-          <th>Available?</th>
-        </tr>
-      </thead>
-      <tbody id="vehicle-details"></tbody>
-    </table>
   </div>
 
   <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
