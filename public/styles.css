@@ -143,13 +143,8 @@ label {
   border-radius: 5px;
 }
 
-#regContainer.active {
-  display: block;
-}
-
 #vehicleDetails {
   position: relative;
-  top: 100px;
   max-width: fit-content;
   padding: 20px;
   background-color: #f2f2f2;
@@ -158,6 +153,18 @@ label {
   border-radius: 5px;
 }
 
+#ratingContainer {
+  display: none;
+  position: relative;
+  top: 15px;
+  width: 100%;
+  padding: 20px;
+  background-color: #f2f2f2;;
+  box-sizing: border-box;
+  z-index: 999;
+  border-radius: 5px;
+}
 
-
-  
+#ratingContainer.active {
+  display: block;
+}
